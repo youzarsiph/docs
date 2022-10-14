@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply transition-all;
+  }
+}
+
+@layer components {
+  .editor {
+    @apply prose-sm m-8 rounded-xl border bg-white p-8 shadow-sm focus:outline-none dark:prose-invert dark:bg-slate-800 sm:prose sm:mx-auto md:prose lg:prose-lg xl:prose-xl;
+  }
+
+  .menu-container {
+    @apply z-10 p-2;
+  }
+
+  .menu {
+    @apply flex flex-wrap items-center gap-1;
+  }
+
+  .menu-item {
+    @apply relative;
+  }
+
+  .btn {
+    @apply rounded-lg border border-slate-200 px-2 py-1 hover:border-slate-50 hover:bg-slate-50 focus:border-slate-100 focus:text-slate-400 focus:outline-none;
+  }
+
+  .seperator {
+    @apply h-8 w-1 rounded-lg bg-slate-300;
+  }
+
+  .tooltip {
+    @apply absolute top-10 left-0 z-10 hidden max-w-xs whitespace-nowrap rounded-lg bg-slate-700 px-4 py-2 text-sm text-white shadow-lg group-hover:inline-block;
+  }
+
+  .dropdown {
+    @apply absolute left-0 top-10 z-20 hidden w-44 max-w-3xl gap-2 rounded-lg border bg-white p-2 shadow-lg peer-checked:flex;
+  }
+
+  .dropdown-item {
+    @apply rounded-lg px-4 py-2 hover:bg-slate-50;
+  }
+}
