@@ -32,7 +32,7 @@ let TipTap = () => {
   const content = `
       <h1>Evolution Editor</h1>
       <p>
-          Enter some text here...
+          A basic WYSIWYG editor based on tiptap.
       </p>
       <br>
     `;

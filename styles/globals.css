@@ -10,7 +10,7 @@
 
 @layer components {
   .editor {
-    @apply prose-sm m-8 rounded-xl border bg-white p-8 shadow-sm focus:outline-none dark:prose-invert dark:bg-slate-800 sm:prose sm:mx-auto md:prose lg:prose-lg xl:prose-xl;
+    @apply prose-sm m-2 rounded-xl border bg-white p-8 shadow-sm focus:outline-none dark:prose-invert dark:bg-slate-800 sm:prose sm:m-8 md:prose md:mx-auto lg:prose-lg xl:prose-xl;
   }
 
   .menu-container {
