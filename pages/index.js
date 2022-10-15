@@ -63,8 +63,6 @@ let TipTap = () => {
         lowlight,
       }),
       Placeholder.configure({
-        // placeholder: "Write something …",
-        // Use different placeholders depending on the node type:
         placeholder: ({ node }) => {
           if (node.type.name === "heading") {
             return "What is the title?";
@@ -85,9 +83,12 @@ let TipTap = () => {
   return (
     <>
       <Head>
-        <title>TipTap Editor</title>
+        <title>Evolution Editor</title>
       </Head>
       <div className="m-4 sm:mx-8 md:mx-16 lg:mx-32 lg:my-16 xl:mx-64 2xl:mx-96">
+        <h1 className="mb-8 text-6xl font-bold tracking-tighter">
+          Evolution Editor
+        </h1>
         <div className="rounded-lg border bg-slate-50 shadow-sm">
           <div className="rounded-t-lg border-b bg-white">
             <MenuBar editor={editor} />
@@ -98,7 +99,7 @@ let TipTap = () => {
               <BubbleMenu
                 editor={editor}
                 tippyOptions={{ duration: 300 }}
-                className="rounded-lg border border-slate-200 bg-white p-2 shadow-lg"
+                className="editor-menu"
               >
                 <Menu>
                   <TextStylesMenu
@@ -116,7 +117,7 @@ let TipTap = () => {
               <FloatingMenu
                 editor={editor}
                 tippyOptions={{ duration: 300 }}
-                className="rounded-lg border border-slate-200 bg-white p-2 shadow-lg"
+                className="editor-menu"
               >
                 <Menu>
                   <ParagraphMenu

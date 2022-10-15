@@ -5,11 +5,11 @@ export class Dropdown extends Component {
     const directions = { col: "flex-col", row: "flex-row" };
     return (
       <div className="relative">
-        <button
-          type="button"
-          className="rounded-lg border border-slate-200 hover:bg-slate-50"
-        >
-          <label htmlFor={this.props.id} className="inline-block px-2 py-1">
+        <button type="button" className="btn p-0">
+          <label
+            htmlFor={this.props.id}
+            className="inline-block cursor-pointer px-2 py-1"
+          >
             {this.props.label}
           </label>
         </button>
@@ -45,7 +45,7 @@ export const FontDropdown = ({ editor, id }) => {
       direction="col"
       label={
         <>
-          <i className="bi bi-fonts mr-4"></i>
+          <i className="bi bi-fonts mr-5"></i>
           <i className="bi bi-chevron-expand"></i>
         </>
       }
@@ -129,14 +129,14 @@ export const ColorDropdown = ({ editor, id }) => {
       className="flex-wrap"
       label={
         <>
-          <i className="bi bi-palette2 mr-4"></i>
+          <i className="bi bi-palette2 mr-5"></i>
           <i className="bi bi-chevron-expand"></i>
         </>
       }
     >
       <li>
         <label
-          type="button"
+          role="button"
           className="relative inline-block aspect-square h-8 w-8 overflow-hidden rounded-full"
         >
           <input
@@ -208,7 +208,7 @@ export const HeadingDropdown = ({ editor, id }) => {
       direction="col"
       label={
         <>
-          <i className="bi bi-type-h1 mr-4"></i>
+          <i className="bi bi-type-h1 mr-5"></i>
           <i className="bi bi-chevron-expand"></i>
         </>
       }
