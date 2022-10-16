@@ -120,6 +120,34 @@ export const ColorDropdown = ({ editor, id }) => {
       value: "rgb(20, 184, 166)",
       bg: "bg-teal-400",
     },
+    {
+      value: "rgb(163, 230, 53)",
+      bg: "bg-lime-400",
+    },
+    {
+      value: "rgb(82, 82, 82)",
+      bg: "bg-neutral-400",
+    },
+    {
+      value: "rgb(71, 85, 105)",
+      bg: "bg-slate-600",
+    },
+    {
+      value: "rgb(234, 88, 12))",
+      bg: "bg-orange-600",
+    },
+    {
+      value: "rgb(245, 158, 11)",
+      bg: "bg-amber-500",
+    },
+    {
+      value: "rgb(5, 150, 105)",
+      bg: "bg-emerald-600",
+    },
+    {
+      value: "rgb(192, 38, 211)",
+      bg: "bg-fuchsia-600",
+    },
   ];
 
   return (

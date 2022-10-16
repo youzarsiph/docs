@@ -92,7 +92,7 @@ export const TextStylesMenu = ({ editor, fontDropdownID, colorDropdownID }) => {
 
   return (
     <>
-      <MenuItem tooltip="Font Families">
+      <MenuItem tooltip="Fonts">
         <FontDropdown editor={editor} id={fontDropdownID} />
       </MenuItem>
 
@@ -291,17 +291,24 @@ export const MenuBar = ({ editor }) => {
 };
 
 export const BottomBar = ({ editor }) => {
+  let words;
+  let characters;
+
+  try {
+    words = editor.storage.characterCount.words();
+    characters = editor.storage.characterCount.characters();
+  } catch (error) {
+    words = 0;
+    characters = 0;
+  }
+
   return (
     <Menu>
-      <MenuItem tooltip="# of characters">
-        <span className="mr-8 text-sm">
-          {/* {editor.storage.characterCount.characters()} Characters */}
-        </span>
+      <MenuItem tooltip="Number of characters">
+        <span className="mr-8 text-sm">{characters} Characters</span>
       </MenuItem>
-      <MenuItem tooltip="# of words">
-        <span className="text-sm ">
-          {/* {editor.storage.characterCount.words()} Words */}
-        </span>
+      <MenuItem tooltip="Number of words">
+        <span className="text-sm ">{words} Words</span>
       </MenuItem>
     </Menu>
   );

@@ -56,7 +56,6 @@ let TipTap = () => {
         types: ["heading", "paragraph"],
       }),
       CharacterCount.configure({
-        mode: "nodeSize",
         limit: null,
       }),
       CodeBlockLowlight.configure({
@@ -86,7 +85,7 @@ let TipTap = () => {
         <title>Evolution Editor</title>
       </Head>
       <div className="m-4 sm:mx-8 md:mx-16 lg:mx-32 lg:my-16 xl:mx-64 2xl:mx-96">
-        <h1 className="mb-8 text-6xl font-bold tracking-tighter">
+        <h1 className="mb-8 text-5xl font-bold tracking-tighter md:text-6xl">
           Evolution Editor
         </h1>
         <div className="rounded-lg border bg-slate-50 shadow-sm">
