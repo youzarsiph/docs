@@ -1,5 +1,10 @@
 import { Component } from "react";
-import { FontDropdown, ColorDropdown, HeadingDropdown } from "./Dropdown";
+import {
+  FontDropdown,
+  ColorDropdown,
+  HeadingDropdown,
+  AlignmentDropdown,
+} from "./Dropdown";
 
 export class Menu extends Component {
   render() {
@@ -125,7 +130,11 @@ export const TextStylesMenu = ({ editor, fontDropdownID, colorDropdownID }) => {
   );
 };
 
-export const ParagraphMenu = ({ editor, headingDropdownID }) => {
+export const ParagraphMenu = ({
+  editor,
+  headingDropdownID,
+  alignmentDropdownID,
+}) => {
   const paragraph = [
     {
       label: "Paragraph",
@@ -176,34 +185,6 @@ export const ParagraphMenu = ({ editor, headingDropdownID }) => {
       className: "",
       icon: <i className="bi bi-arrow-return-left"></i>,
     },
-    {
-      label: "Align Left",
-      click: () => editor.chain().focus().setTextAlign("left").run(),
-      disabled: false,
-      className: editor.isActive({ textAlign: "left" }) ? "bg-slate-50" : "",
-      icon: <i className="bi bi-text-left"></i>,
-    },
-    {
-      label: "Align Center",
-      click: () => editor.chain().focus().setTextAlign("center").run(),
-      disabled: false,
-      className: editor.isActive({ textAlign: "center" }) ? "bg-slate-50" : "",
-      icon: <i className="bi bi-text-center"></i>,
-    },
-    {
-      label: "Align Right",
-      click: () => editor.chain().focus().setTextAlign("right").run(),
-      disabled: false,
-      className: editor.isActive({ textAlign: "right" }) ? "bg-slate-50" : "",
-      icon: <i className="bi bi-text-right"></i>,
-    },
-    {
-      label: "Justify",
-      click: () => editor.chain().focus().setTextAlign("justify").run(),
-      disabled: false,
-      className: editor.isActive({ textAlign: "justify" }) ? "bg-slate-50" : "",
-      icon: <i className="bi bi-justify"></i>,
-    },
   ];
 
   return (
@@ -225,6 +206,9 @@ export const ParagraphMenu = ({ editor, headingDropdownID }) => {
           </MenuItem>
         );
       })}
+      <MenuItem tooltip="Alignment">
+        <AlignmentDropdown editor={editor} id={alignmentDropdownID} />
+      </MenuItem>
     </>
   );
 };
@@ -281,7 +265,11 @@ export const MenuBar = ({ editor }) => {
 
       <li className="seperator"></li>
 
-      <ParagraphMenu editor={editor} headingDropdownID="headings" />
+      <ParagraphMenu
+        editor={editor}
+        headingDropdownID="headings"
+        alignmentDropdownID="alignments"
+      />
 
       <li className="seperator"></li>
 

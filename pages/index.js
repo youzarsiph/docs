@@ -27,6 +27,9 @@ import {
 } from "@tiptap/react";
 import CharacterCount from "@tiptap/extension-character-count";
 import CodeBlockLowlight from "@tiptap/extension-code-block-lowlight";
+import css from "highlight.js/lib/languages/css";
+
+lowlight.registerLanguage("css", css);
 
 let TipTap = () => {
   const content = `
@@ -122,6 +125,7 @@ let TipTap = () => {
                   <ParagraphMenu
                     editor={editor}
                     headingDropdownID="menuHeadings"
+                    alignmentDropdownID="menuAlignmet"
                   />
                 </Menu>
               </FloatingMenu>

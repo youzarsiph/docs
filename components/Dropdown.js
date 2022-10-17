@@ -1,11 +1,11 @@
-import { Component } from "react";
+import { Component, useState } from "react";
 
 export class Dropdown extends Component {
   render() {
     const directions = { col: "flex-col", row: "flex-row" };
     return (
       <div className="relative">
-        <button type="button" className="btn p-0">
+        <button type="button" className="btn p-0" onClick={this.props.click}>
           <label
             htmlFor={this.props.id}
             className="inline-block cursor-pointer px-2 py-1"
@@ -17,6 +17,7 @@ export class Dropdown extends Component {
         <label
           htmlFor={this.props.id}
           className="hidden peer-checked:fixed peer-checked:inset-0 peer-checked:block"
+          onClick={this.props.click}
         ></label>
         <ul
           className={`dropdown ${this.props.className} ${
@@ -37,6 +38,8 @@ export class DropdownItem extends Component {
 }
 
 export const FontDropdown = ({ editor, id }) => {
+  let [state, setState] = useState({ isOpened: false });
+
   const fontFamilies = ["Arial"];
 
   return (
@@ -46,9 +49,16 @@ export const FontDropdown = ({ editor, id }) => {
       label={
         <>
           <i className="bi bi-fonts mr-5"></i>
-          <i className="bi bi-chevron-expand"></i>
+          {state.isOpened ? (
+            <i className="bi bi-chevron-contract"></i>
+          ) : (
+            <i className="bi bi-chevron-expand"></i>
+          )}
         </>
       }
+      click={() => {
+        setState({ isOpened: !state.isOpened });
+      }}
     >
       <DropdownItem>
         <button
@@ -56,7 +66,7 @@ export const FontDropdown = ({ editor, id }) => {
           onClick={() => {
             editor.chain().focus().unsetFontFamily().run();
           }}
-          className={`flex w-full items-center justify-between gap-4 after:inline-block after:h-4 after:w-4 after:rounded-full`}
+          className={`dropdown-btn`}
         >
           Clear fonts
         </button>
@@ -69,7 +79,7 @@ export const FontDropdown = ({ editor, id }) => {
               onClick={() => {
                 editor.chain().focus().setFontFamily(item).run();
               }}
-              className={`flex w-full items-center justify-between gap-4 after:inline-block after:h-4 after:w-4 after:rounded-full
+              className={`dropdown-btn
                     ${
                       editor.isActive("textStyle", { fontFamily: item })
                         ? "after:bg-lime-400"
@@ -87,6 +97,8 @@ export const FontDropdown = ({ editor, id }) => {
 };
 
 export const ColorDropdown = ({ editor, id }) => {
+  let [state, setState] = useState({ isOpened: false });
+
   const colors = [
     {
       value: "rgb(96, 165, 250)",
@@ -133,7 +145,7 @@ export const ColorDropdown = ({ editor, id }) => {
       bg: "bg-slate-600",
     },
     {
-      value: "rgb(234, 88, 12))",
+      value: "rgb(234, 88, 12)",
       bg: "bg-orange-600",
     },
     {
@@ -158,9 +170,16 @@ export const ColorDropdown = ({ editor, id }) => {
       label={
         <>
           <i className="bi bi-palette2 mr-5"></i>
-          <i className="bi bi-chevron-expand"></i>
+          {state.isOpened ? (
+            <i className="bi bi-chevron-contract"></i>
+          ) : (
+            <i className="bi bi-chevron-expand"></i>
+          )}
         </>
       }
+      click={() => {
+        setState({ isOpened: !state.isOpened });
+      }}
     >
       <li>
         <label
@@ -203,6 +222,8 @@ export const ColorDropdown = ({ editor, id }) => {
 };
 
 export const HeadingDropdown = ({ editor, id }) => {
+  let [state, setState] = useState({ isOpened: false });
+
   const headings = [
     {
       level: 1,
@@ -237,9 +258,16 @@ export const HeadingDropdown = ({ editor, id }) => {
       label={
         <>
           <i className="bi bi-type-h1 mr-5"></i>
-          <i className="bi bi-chevron-expand"></i>
+          {state.isOpened ? (
+            <i className="bi bi-chevron-contract"></i>
+          ) : (
+            <i className="bi bi-chevron-expand"></i>
+          )}
         </>
       }
+      click={() => {
+        setState({ isOpened: !state.isOpened });
+      }}
     >
       {headings.map((heading) => {
         return (
@@ -253,7 +281,7 @@ export const HeadingDropdown = ({ editor, id }) => {
                   .toggleHeading({ level: heading.level })
                   .run();
               }}
-              className={`flex w-full items-center justify-between gap-4 after:inline-block after:h-4 after:w-4 after:rounded-full
+              className={`dropdown-btn
                     ${
                       editor.isActive("heading", { level: heading.level })
                         ? "after:bg-lime-400"
@@ -262,6 +290,75 @@ export const HeadingDropdown = ({ editor, id }) => {
                   `}
             >
               {heading.icon}
+            </button>
+          </DropdownItem>
+        );
+      })}
+    </Dropdown>
+  );
+};
+
+export const AlignmentDropdown = ({ editor, id }) => {
+  let [state, setState] = useState({ isOpened: false });
+
+  const alignments = [
+    {
+      label: "Left",
+      value: "left",
+      icon: <i className="bi bi-text-left"></i>,
+    },
+    {
+      label: "Center",
+      value: "center",
+      icon: <i className="bi bi-text-center"></i>,
+    },
+    {
+      label: "Right",
+      value: "right",
+      icon: <i className="bi bi-text-right"></i>,
+    },
+    {
+      label: "Justify",
+      value: "justify",
+      icon: <i className="bi bi-justify"></i>,
+    },
+  ];
+
+  return (
+    <Dropdown
+      id={id}
+      direction="col"
+      label={
+        <>
+          <i className="bi bi-text-left mr-5"></i>
+          {state.isOpened ? (
+            <i className="bi bi-chevron-contract"></i>
+          ) : (
+            <i className="bi bi-chevron-expand"></i>
+          )}
+        </>
+      }
+      click={() => {
+        setState({ isOpened: !state.isOpened });
+      }}
+    >
+      {alignments.map((item) => {
+        return (
+          <DropdownItem key={Math.random()}>
+            <button
+              type="button"
+              onClick={() => {
+                editor.chain().focus().setTextAlign(item.value).run();
+              }}
+              className={`dropdown-btn
+                    ${
+                      editor.isActive({ textAlign: item.value })
+                        ? "after:bg-lime-400"
+                        : ""
+                    }
+                  `}
+            >
+              {item.icon} {item.label}
             </button>
           </DropdownItem>
         );
