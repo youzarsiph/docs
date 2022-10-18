@@ -192,6 +192,9 @@ export const ParagraphMenu = ({
       <MenuItem tooltip="Headings">
         <HeadingDropdown editor={editor} id={headingDropdownID} />
       </MenuItem>
+      <MenuItem tooltip="Alignment">
+        <AlignmentDropdown editor={editor} id={alignmentDropdownID} />
+      </MenuItem>
       {paragraph.map((item) => {
         return (
           <MenuItem key={Math.random()} tooltip={item.label}>
@@ -206,9 +209,6 @@ export const ParagraphMenu = ({
           </MenuItem>
         );
       })}
-      <MenuItem tooltip="Alignment">
-        <AlignmentDropdown editor={editor} id={alignmentDropdownID} />
-      </MenuItem>
     </>
   );
 };

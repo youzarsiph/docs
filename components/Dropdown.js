@@ -72,6 +72,8 @@ export const FontDropdown = ({ editor, id }) => {
         </button>
       </DropdownItem>
       {fontFamilies.map((item) => {
+        let isActive = editor.isActive("textStyle", { fontFamily: item });
+
         return (
           <DropdownItem key={Math.random()}>
             <button
@@ -79,13 +81,7 @@ export const FontDropdown = ({ editor, id }) => {
               onClick={() => {
                 editor.chain().focus().setFontFamily(item).run();
               }}
-              className={`dropdown-btn
-                    ${
-                      editor.isActive("textStyle", { fontFamily: item })
-                        ? "after:bg-lime-400"
-                        : ""
-                    }
-                  `}
+              className={`dropdown-btn ${isActive ? "after:bg-lime-400" : ""}`}
             >
               {item}
             </button>
@@ -270,6 +266,8 @@ export const HeadingDropdown = ({ editor, id }) => {
       }}
     >
       {headings.map((heading) => {
+        let isActive = editor.isActive("heading", { level: heading.level });
+        
         return (
           <DropdownItem key={Math.random()}>
             <button
@@ -281,13 +279,7 @@ export const HeadingDropdown = ({ editor, id }) => {
                   .toggleHeading({ level: heading.level })
                   .run();
               }}
-              className={`dropdown-btn
-                    ${
-                      editor.isActive("heading", { level: heading.level })
-                        ? "after:bg-lime-400"
-                        : ""
-                    }
-                  `}
+              className={`dropdown-btn ${isActive ? "after:bg-lime-400" : ""}`}
             >
               {heading.icon}
             </button>
@@ -343,6 +335,8 @@ export const AlignmentDropdown = ({ editor, id }) => {
       }}
     >
       {alignments.map((item) => {
+        let isActive = editor.isActive({ textAlign: item.value });
+
         return (
           <DropdownItem key={Math.random()}>
             <button
@@ -350,13 +344,7 @@ export const AlignmentDropdown = ({ editor, id }) => {
               onClick={() => {
                 editor.chain().focus().setTextAlign(item.value).run();
               }}
-              className={`dropdown-btn
-                    ${
-                      editor.isActive({ textAlign: item.value })
-                        ? "after:bg-lime-400"
-                        : ""
-                    }
-                  `}
+              className={`dropdown-btn ${isActive ? "after:bg-lime-400" : ""}`}
             >
               {item.icon} {item.label}
             </button>

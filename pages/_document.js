@@ -9,7 +9,7 @@ export default function Document() {
           href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css"
         ></link>
       </Head>
-      <body className="flex h-screen items-center justify-center">
+      <body className="flex items-center justify-center">
         <Main />
         <NextScript />
       </body>
