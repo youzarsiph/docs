@@ -155,7 +155,7 @@ const Actions = [
         type: "item",
         name: "JetBrains Mono",
         isActive: (editor: Editor) =>
-          editor.isActive("textStyle", Fonts.code["JetBrains Mono"].style),
+          editor.isActive("textStyle", Fonts.mono["JetBrains Mono"].style),
         disabled: undefined,
         description: "Change font family to JetBrains Mono",
         icon: () => undefined,
@@ -165,7 +165,7 @@ const Actions = [
         type: "item",
         name: "Fira Code",
         isActive: (editor: Editor) =>
-          editor.isActive("textStyle", Fonts.code["Fira Code"].style),
+          editor.isActive("textStyle", Fonts.mono["Fira Code"].style),
         disabled: undefined,
         description: "Change font family to Fira Code",
         icon: () => undefined,
