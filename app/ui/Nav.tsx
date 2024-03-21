@@ -14,7 +14,6 @@ const Nav = (props: NavProps) => {
         <div className="grid w-full gap-2">
           <Transition
             appear={true}
-            as={React.Fragment}
             show={display}
             enter="transform transition duration-[400ms]"
             enterFrom="opacity-0 hidden scale-y-0"
@@ -66,7 +65,6 @@ const Nav = (props: NavProps) => {
                 </div>
               </div>
             </div>
-            <div className="h-full w-full rounded-md bg-white shadow-lg" />
           </Transition>
 
           <div className="flex w-full items-center justify-between gap-4">

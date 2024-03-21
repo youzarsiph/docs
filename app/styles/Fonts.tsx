@@ -28,7 +28,7 @@ const Fonts = {
   sans: {
     "Noto Sans": NotoSans,
   },
-  code: {
+  mono: {
     "Fira Code": FiraCode,
     "JetBrains Mono": JetBrainsMono,
   },

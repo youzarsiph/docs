@@ -47,7 +47,7 @@ function createConfig(doc: Y.Doc, provider: WebrtcProvider) {
       CharacterCount,
       CodeBlockLowlight.configure({
         lowlight,
-        HTMLAttributes: { class: Fonts.code["JetBrains Mono"].className },
+        HTMLAttributes: { class: Fonts.mono["Fira Code"].className },
       }),
       Collaboration.configure({ field: "title", document: doc }),
       CollaborationCursor.configure({
@@ -90,7 +90,7 @@ function createConfig(doc: Y.Doc, provider: WebrtcProvider) {
       StarterKit.configure({
         history: false,
         codeBlock: {
-          HTMLAttributes: { class: Fonts.code["JetBrains Mono"].className },
+          HTMLAttributes: { class: Fonts.mono["Fira Code"].className },
         },
       }),
     ],
