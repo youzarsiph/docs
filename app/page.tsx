@@ -8,7 +8,7 @@ import { WebrtcProvider } from "y-webrtc";
 import { useEditor } from "@tiptap/react";
 import { createConfig } from "@/app/utils";
 import { Doc, Settings } from "@/app/types";
-import { Background, Nav, Page } from "@/app/ui";
+import { Background, Button, Nav, Page } from "@/app/ui";
 
 const doc = new Y.Doc();
 const provider = new WebrtcProvider("example-document", doc);
@@ -27,15 +27,16 @@ const Home = () => {
     title: "My Doc",
     pages: [{}],
   });
-  const [active, setActive] = React.useState(0);
+  const [active, setActive] = React.useState(document.pages[0]);
 
   const editor = useEditor({
+    content: active,
     ...createConfig(doc, provider),
     onUpdate: ({ editor }) =>
       setDocument({
         ...document,
-        pages: document.pages.map((page, i) => {
-          if (i === active) {
+        pages: document.pages.map((page) => {
+          if (page === active) {
             page = editor.getJSON();
           }
 
@@ -45,11 +46,30 @@ const Home = () => {
   });
 
   if (!editor) {
-    return "Loading";
+    return (
+      <div
+        className={clsx(
+          { dark: settings.theme },
+          "relative flex h-screen w-screen flex-col items-center justify-center gap-8 bg-white/50 dark:bg-slate-800/50",
+        )}
+      >
+        <Background />
+
+        <div className="relative flex h-32 w-32 items-center justify-center">
+          <div className="h-full w-full animate-spin rounded-full border-8 border-x-white/80 border-y-slate-800/80"></div>
+        </div>
+        <h1 className="text-2xl">Loading...</h1>
+      </div>
+    );
   }
 
   return (
-    <div className={clsx({ dark: settings.theme }, "block h-screen w-screen")}>
+    <div
+      className={clsx(
+        { dark: settings.theme },
+        "relative block h-screen w-screen",
+      )}
+    >
       <link
         rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/bootstrap-icons@latest/font/bootstrap-icons.min.css"
@@ -69,13 +89,9 @@ const Home = () => {
           />
 
           <div className="relative flex h-full w-full items-center justify-center overflow-auto">
-            <div className="absolute right-4 top-4 z-10 grid gap-4 rounded p-4 shadow-xl backdrop-blur-3xl">
+            <div className="absolute left-4 top-4 z-10 grid max-w-32 gap-4 rounded-xl bg-white/50 p-4 shadow-xl ring-white backdrop-blur-3xl dark:bg-slate-800/50 dark:ring-slate-900">
               {document.pages.map((page, i) => (
-                <button
-                  key={i}
-                  onClick={() => setActive(i)}
-                  className="relative flex h-24 w-12 items-center justify-center rounded bg-gradient-to-t ring-1"
-                >
+                <Button key={i} onClick={() => setActive(page)}>
                   <span className="absolute -right-2 -top-2 flex h-4 w-4">
                     <span className="relative inline-flex h-4 w-4 rounded-full bg-white dark:bg-slate-900">
                       <span
@@ -84,7 +100,7 @@ const Home = () => {
                           setDocument({
                             ...document,
                             pages: document.pages.filter(
-                              (page, index) => index !== active,
+                              (page) => page !== active,
                             ),
                           })
                         }
@@ -93,42 +109,38 @@ const Home = () => {
                       </span>
                     </span>
                   </span>
-                  {i}
-                </button>
+                  Page {i + 1}
+                </Button>
               ))}
 
-              <button
+              <Button
                 onClick={() =>
                   setDocument({ ...document, pages: [...document.pages, {}] })
                 }
-                className="flex h-12 w-24 items-center justify-center gap-4 rounded ring-1 ring-white hover:bg-white/75 focus:ring-8 focus:ring-offset-2 active:scale-90 dark:ring-slate-900 dark:hover:bg-slate-800/75"
               >
                 <i className="bi bi-plus-lg text-xl" />
                 <span>Add</span>
-              </button>
+              </Button>
             </div>
 
             <div className="relative flex h-full w-full flex-col items-center gap-4 overflow-auto py-4">
-              {document.pages.map((page) => (
-                <Page
-                  key={page.text}
-                  editor={editor}
-                  settings={settings}
-                  content={page}
-                  onContentChange={(content) =>
-                    setDocument({
-                      ...document,
-                      pages: document.pages.map((p) => {
-                        if (p === page) {
-                          p = content;
-                        }
+              <Page
+                editor={editor}
+                content={active}
+                settings={settings}
+                onContentChange={(content) =>
+                  setDocument({
+                    ...document,
+                    pages: document.pages.map((p) => {
+                      if (p === active) {
+                        p = content;
+                      }
 
-                        return p;
-                      }),
-                    })
-                  }
-                />
-              ))}
+                      return p;
+                    }),
+                  })
+                }
+              />
             </div>
           </div>
         </main>

@@ -40,7 +40,7 @@ function createConfig(doc: Y.Doc, provider: WebrtcProvider) {
     editorProps: {
       attributes: {
         class:
-          "prose prose-slate h-full min-h-full w-full min-w-full outline-none md:prose-lg lg:prose-xl xl:prose-2xl dark:prose-invert focus:outline-none",
+          "prose prose-gray h-full min-h-full w-full min-w-full outline-none md:prose-lg lg:prose-xl xl:prose-2xl dark:prose-invert focus:outline-none",
       },
     },
     extensions: [
@@ -56,7 +56,7 @@ function createConfig(doc: Y.Doc, provider: WebrtcProvider) {
       }),
       Color,
       Focus.configure({
-        mode: "shallowest",
+        mode: "all",
         className:
           "border-1 border-dashed border-slate-800/75 dark:border-white/75 rounded",
       }),

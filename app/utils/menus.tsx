@@ -14,7 +14,7 @@ const Menus: DropdownProps[] = [
         name: "New",
         shortcut: "Ctrl + N",
         description: "New Doc",
-        icon: () => <i className="bi bi-file text-xl" />,
+        icon: () => <i className="bi bi-file-earmark-plus text-xl" />,
         onClick: () => {},
       },
       {
@@ -95,7 +95,8 @@ const Menus: DropdownProps[] = [
         name: "Delete",
         description: "Delete selected text",
         icon: () => <i className="bi bi-trash text-xl" />,
-        onClick: () => {},
+        onClick: (editor: Editor) =>
+          editor.chain().focus().deleteSelection().run(),
       },
     ],
   },
@@ -107,7 +108,7 @@ const Menus: DropdownProps[] = [
         name: "New",
         shortcut: "Ctrl + N",
         description: "New Doc",
-        icon: () => <i className="bi bi-file text-xl" />,
+        icon: () => <i className="bi bi-file-earmark-plus text-xl" />,
         onClick: () => {},
       },
     ],
@@ -120,35 +121,64 @@ const Menus: DropdownProps[] = [
         name: "Image",
         description: "Insert an image",
         icon: () => <i className="bi bi-image text-xl" />,
-        onClick: () => {},
+        onClick: (editor: Editor) =>
+          editor.chain().focus().setImage({ src: "../assets/img.png" }).run(),
       },
       {
         type: "item",
         name: "Table",
         description: "Insert a table",
         icon: () => <i className="bi bi-table text-xl" />,
-        onClick: () => {},
+        onClick: (editor: Editor) =>
+          editor
+            .chain()
+            .focus()
+            .insertTable({ rows: 1, cols: 3, withHeaderRow: true })
+            .run(),
       },
       {
         type: "item",
         name: "Horizontal Rule",
         description: "Insert an horizontal rule",
         icon: () => <i className="bi bi-hr text-xl" />,
-        onClick: () => {},
+        onClick: (editor: Editor) =>
+          editor.chain().focus().setHorizontalRule().run(),
       },
       {
         type: "item",
         name: "Hard Break",
         description: "Insert an hard break",
         icon: () => <i className="bi bi-file-earmark-break text-xl" />,
-        onClick: () => {},
+        onClick: (editor: Editor) =>
+          editor.chain().focus().setHardBreak().run(),
       },
       {
         type: "item",
         name: "Link",
         description: "Insert a link",
         icon: () => <i className="bi bi-link-45deg text-xl" />,
-        onClick: () => {},
+        onClick: (editor: Editor) =>
+          editor
+            .chain()
+            .focus()
+            .setLink({ href: "https://github.com/youzarsiph" })
+            .run(),
+      },
+      {
+        type: "item",
+        name: "Code Block",
+        description: "Insert a codeblock",
+        icon: () => <i className="bi bi-code-square text-xl" />,
+        onClick: (editor: Editor) =>
+          editor.chain().focus().toggleCodeBlock().run(),
+      },
+      {
+        type: "item",
+        name: "Blockquote",
+        description: "Insert a Blockquote",
+        icon: () => <i className="bi bi-blockquote-left text-xl" />,
+        onClick: (editor: Editor) =>
+          editor.chain().focus().toggleBlockquote().run(),
       },
     ],
   },
@@ -446,6 +476,25 @@ const Menus: DropdownProps[] = [
         description: "Clear all nodes",
         icon: () => <i className="bi bi-x-square text-xl" />,
         onClick: (editor: Editor) => editor.chain().focus().clearNodes().run(),
+      },
+    ],
+  },
+  {
+    label: "Tools",
+    items: [
+      {
+        type: "item",
+        name: "Spell check",
+        description: "Check doc spell",
+        icon: () => <i className="bi bi-spellcheck text-xl" />,
+        onClick: () => {},
+      },
+      {
+        type: "item",
+        name: "Word & Character Count",
+        description: "Word & Character Count show/hide",
+        icon: () => <i className="bi bi-123 text-xl" />,
+        onClick: () => {},
       },
     ],
   },

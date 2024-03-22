@@ -28,7 +28,11 @@ const Dropdown = (props: DropdownProps & { editor: Editor }) => (
               <Menu.Item>
                 {({ active }) => (
                   <button
-                    onClick={() => item.onClick(props.editor)}
+                    onClick={() =>
+                      item.onClick !== undefined
+                        ? item.onClick(props.editor)
+                        : undefined
+                    }
                     className={clsx(
                       "group flex w-full items-center justify-between gap-4 rounded-md px-2 py-1 ring-1 ring-transparent",
                       {
@@ -80,7 +84,11 @@ const Dropdown = (props: DropdownProps & { editor: Editor }) => (
                         <Menu.Item>
                           {() => (
                             <button
-                              onClick={() => item.onClick(props.editor)}
+                              onClick={() =>
+                                item.onClick !== undefined
+                                  ? item.onClick(props.editor)
+                                  : undefined
+                              }
                               className={clsx(
                                 "group flex w-full items-center justify-between gap-4 rounded-md px-2 py-1 ring-1 ring-transparent",
                                 "hover:bg-slate-100 hover:ring-slate-200 dark:hover:bg-slate-900 dark:hover:ring-slate-950",

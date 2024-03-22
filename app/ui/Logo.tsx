@@ -7,7 +7,6 @@ const Logo = () => (
     <div className="flex h-full w-full flex-col items-start justify-center gap-1 rounded-sm rounded-tr bg-white/50 p-1 dark:bg-slate-800/50">
       <div className="h-0.5 w-full rounded-full bg-slate-900 dark:bg-white"></div>
       <div className="h-0.5 w-full rounded-full bg-slate-900 dark:bg-white"></div>
-      <div className="h-0.5 w-full rounded-full bg-slate-900 dark:bg-white"></div>
       <div className="h-0.5 w-1/2 rounded-full bg-slate-900 dark:bg-white"></div>
     </div>
   </div>

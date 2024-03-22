@@ -12,8 +12,9 @@ type DropdownItem = {
   description: string;
   items?: DropdownItem[];
   icon: () => React.ReactNode;
-  disabled?: (editor: Editor) => boolean | boolean;
-  onClick: ((editor: Editor) => boolean) | (() => void);
+  isActive?: (editor: Editor) => boolean;
+  disabled?: (editor: Editor) => boolean;
+  onClick?: ((editor: Editor) => boolean) | (() => void);
 };
 
 type DropdownProps = {
