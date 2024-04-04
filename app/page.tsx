@@ -6,14 +6,26 @@ import React from "react";
 import "highlight.js/styles/github-dark.css";
 import { WebrtcProvider } from "y-webrtc";
 import { useEditor } from "@tiptap/react";
-import { createConfig } from "@/app/utils";
-import { Doc, Settings } from "@/app/types";
-import { Background, Button, Nav, Page } from "@/app/ui";
+import { Constants, createConfig } from "@/app/utils";
+import { Doc, Padding, Settings, Size } from "@/app/types";
+import {
+  Background,
+  Button,
+  Loading,
+  Modal,
+  Nav,
+  Page,
+  Select,
+} from "@/app/ui";
 
 const doc = new Y.Doc();
 const provider = new WebrtcProvider("example-document", doc);
 
 const Home = () => {
+  // Display modals
+  const [modals, setModals] = React.useState({ page: false });
+
+  // Settings
   const [settings, setSettings] = React.useState<Settings>({
     theme: true,
     format: "pdf",
@@ -22,6 +34,7 @@ const Home = () => {
     orientation: true,
   });
 
+  // Docs
   const [document, setDocument] = React.useState<Doc>({
     id: 0,
     title: "My Doc",
@@ -46,21 +59,7 @@ const Home = () => {
   });
 
   if (!editor) {
-    return (
-      <div
-        className={clsx(
-          { dark: settings.theme },
-          "relative flex h-screen w-screen flex-col items-center justify-center gap-8 bg-white/50 dark:bg-slate-800/50",
-        )}
-      >
-        <Background />
-
-        <div className="relative flex h-32 w-32 items-center justify-center">
-          <div className="h-full w-full animate-spin rounded-full border-8 border-x-white/80 border-y-slate-800/80"></div>
-        </div>
-        <h1 className="text-2xl">Loading...</h1>
-      </div>
-    );
+    return <Loading theme={settings.theme} />;
   }
 
   return (
@@ -123,6 +122,15 @@ const Home = () => {
               </Button>
             </div>
 
+            <div className="absolute right-8 top-4 z-10 grid max-w-32 gap-4 rounded-xl bg-white/50 p-4 shadow-xl ring-white backdrop-blur-3xl dark:bg-slate-800/50 dark:ring-slate-900">
+              <Button
+                onClick={() => setModals({ ...modals, page: !modals.page })}
+              >
+                <i className="bi bi-person text-xl" />
+                <span>Page Setup</span>
+              </Button>
+            </div>
+
             <div className="relative flex h-full w-full flex-col items-center gap-4 overflow-auto py-4">
               <Page
                 editor={editor}
@@ -145,6 +153,27 @@ const Home = () => {
           </div>
         </main>
       </div>
+
+      <Modal
+        title="Page Setup"
+        show={modals.page}
+        theme={settings.theme}
+        onClose={() => setModals({ page: false })}
+      >
+        <Select
+          label="Size"
+          value={settings.size}
+          data={Object.keys(Constants.sizes)}
+          onChange={(v) => setSettings({ ...settings, size: v as Size })}
+        />
+
+        <Select
+          label="Margin"
+          value={settings.padding}
+          data={Object.keys(Constants.paddings)}
+          onChange={(v) => setSettings({ ...settings, padding: v as Padding })}
+        />
+      </Modal>
     </div>
   );
 };

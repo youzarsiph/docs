@@ -4,20 +4,17 @@ import { Listbox, Transition } from "@headlessui/react";
 
 const Select = (props: {
   label: string;
-  data: string[];
   value: string;
-  onChange: (value: string) => void;
+  data: string[];
+  onChange: (val: string) => void;
 }) => (
   <div className="grid gap-2">
     <span>{props.label}</span>
-    <Listbox value={props.value} onChange={props.onChange}>
+    <Listbox value={props.value} onChange={(v) => props.onChange(v)}>
       <div className="relative mt-1">
-        <Listbox.Button className="relative w-full cursor-default rounded-xl bg-transparent py-2 pl-4 pr-10 text-left ring-1 ring-white focus:ring-4 focus:ring-offset-2 sm:text-sm">
+        <Listbox.Button className="flex w-full cursor-pointer items-center justify-between gap-4 rounded-lg border border-white bg-transparent px-4 py-2 ring-1 ring-white focus:border-teal-500 focus:ring-4 focus:ring-teal-400 focus:ring-offset-2 dark:border-slate-900 dark:ring-slate-900">
           <span className="block truncate">{props.value}</span>
-
-          <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
-            <i className="bi bi-chevron-expand text-xl" />
-          </span>
+          <i className="bi bi-chevron-expand text-xl" />
         </Listbox.Button>
 
         <Transition
@@ -26,41 +23,37 @@ const Select = (props: {
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
         >
-          <Listbox.Options className="absolute mt-1 max-h-60 w-full overflow-auto rounded-xl bg-white/75 text-base shadow-lg ring-2 ring-white focus:outline-none sm:text-sm dark:bg-slate-800/75">
-            <div className="relative h-full w-full py-2">
-              <div className="absolute inset-0 -z-10 rounded-xl backdrop-blur-3xl backdrop-filter"></div>
-
-              {props.data.map((item, index) => (
-                <Listbox.Option
-                  key={index}
-                  value={item}
-                  className={({ active }) =>
-                    clsx(
-                      "relative cursor-default select-none py-2 pl-10 pr-4",
-                      { "bg-slate-800/75 dark:bg-white/75": active },
-                    )
-                  }
-                >
-                  {({ selected }) => (
-                    <>
-                      <span
-                        className={clsx("block truncate", {
-                          "font-medium": selected,
-                          "font-normal": !selected,
-                        })}
-                      >
-                        {item}
-                      </span>
-                      {selected ? (
-                        <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-amber-600">
-                          <i className="bi bi-check-lg text-xl" />
-                        </span>
-                      ) : null}
-                    </>
-                  )}
-                </Listbox.Option>
-              ))}
-            </div>
+          <Listbox.Options className="absolute z-10 mt-1 grid max-h-60 w-full cursor-pointer gap-2 overflow-auto rounded-md bg-white px-1 py-2 shadow-xl ring-1 ring-white focus:outline-none dark:bg-slate-800 dark:ring-slate-900">
+            {props.data.map((item, index) => (
+              <Listbox.Option
+                key={index}
+                className={({ active }) =>
+                  clsx(
+                    "flex items-center justify-between gap-4 rounded-lg px-2 py-1",
+                    {
+                      "bg-teal-500 text-white": active,
+                    },
+                  )
+                }
+                value={item}
+              >
+                {({ selected }) => (
+                  <>
+                    <span
+                      className={clsx("block truncate", {
+                        "font-medium": selected,
+                        "font-normal": !selected,
+                      })}
+                    >
+                      {item}
+                    </span>
+                    {selected ? (
+                      <i className="bi bi-check-lg text-xl" />
+                    ) : undefined}
+                  </>
+                )}
+              </Listbox.Option>
+            ))}
           </Listbox.Options>
         </Transition>
       </div>

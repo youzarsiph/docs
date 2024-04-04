@@ -233,7 +233,125 @@ const ActionsMap = {
       description: "Change font size",
       icon: () => <i className="bi bi-type" />,
       onClick: (editor: Editor) => editor.chain().focus().run(),
-      items: [],
+      items: [
+        {
+          type: "item",
+          name: "12px",
+          disabled: (editor: Editor) => !editor.can().setParagraph(),
+          description: "Change font size to 12px",
+          icon: () => <i className="bi bi-paragraph" />,
+          onClick: (editor: Editor) =>
+            editor.chain().focus().setParagraph().run(),
+        },
+        {
+          type: "item",
+          name: "14px",
+          disabled: (editor: Editor) => !editor.can().setParagraph(),
+          description: "Change font size to 14px",
+          icon: () => <i className="bi bi-paragraph" />,
+          onClick: (editor: Editor) =>
+            editor.chain().focus().setParagraph().run(),
+        },
+        {
+          type: "item",
+          name: "16px",
+          disabled: (editor: Editor) => !editor.can().setParagraph(),
+          description: "Change font size to 16px",
+          icon: () => <i className="bi bi-paragraph" />,
+          onClick: (editor: Editor) =>
+            editor.chain().focus().setParagraph().run(),
+        },
+        {
+          type: "item",
+          name: "18px",
+          disabled: (editor: Editor) => !editor.can().setParagraph(),
+          description: "Change font size to 18px",
+          icon: () => <i className="bi bi-paragraph" />,
+          onClick: (editor: Editor) =>
+            editor.chain().focus().setParagraph().run(),
+        },
+        {
+          type: "item",
+          name: "20px",
+          disabled: (editor: Editor) => !editor.can().setParagraph(),
+          description: "Change font size to 20px",
+          icon: () => <i className="bi bi-paragraph" />,
+          onClick: (editor: Editor) =>
+            editor.chain().focus().setParagraph().run(),
+        },
+        {
+          type: "item",
+          name: "24px",
+          disabled: (editor: Editor) => !editor.can().setParagraph(),
+          description: "Change font size to 24px",
+          icon: () => <i className="bi bi-paragraph" />,
+          onClick: (editor: Editor) =>
+            editor.chain().focus().setParagraph().run(),
+        },
+        {
+          type: "item",
+          name: "30px",
+          disabled: (editor: Editor) => !editor.can().setParagraph(),
+          description: "Change font size to 30px",
+          icon: () => <i className="bi bi-paragraph" />,
+          onClick: (editor: Editor) =>
+            editor.chain().focus().setParagraph().run(),
+        },
+        {
+          type: "item",
+          name: "36px",
+          disabled: (editor: Editor) => !editor.can().setParagraph(),
+          description: "Change font size to 36px",
+          icon: () => <i className="bi bi-paragraph" />,
+          onClick: (editor: Editor) =>
+            editor.chain().focus().setParagraph().run(),
+        },
+        {
+          type: "item",
+          name: "48px",
+          disabled: (editor: Editor) => !editor.can().setParagraph(),
+          description: "Change font size to 48px",
+          icon: () => <i className="bi bi-paragraph" />,
+          onClick: (editor: Editor) =>
+            editor.chain().focus().setParagraph().run(),
+        },
+        {
+          type: "item",
+          name: "60px",
+          disabled: (editor: Editor) => !editor.can().setParagraph(),
+          description: "Change font size to 60px",
+          icon: () => <i className="bi bi-paragraph" />,
+          onClick: (editor: Editor) =>
+            editor.chain().focus().setParagraph().run(),
+        },
+        {
+          type: "item",
+          name: "72px",
+          disabled: (editor: Editor) => !editor.can().setParagraph(),
+          description: "Change font size to 72px",
+          icon: () => <i className="bi bi-paragraph" />,
+          onClick: (editor: Editor) =>
+            editor.chain().focus().setParagraph().run(),
+        },
+        {
+          type: "item",
+          name: "96px",
+          disabled: (editor: Editor) => !editor.can().setParagraph(),
+          description: "Change font size to 96px",
+          icon: () => <i className="bi bi-paragraph" />,
+          onClick: (editor: Editor) =>
+            editor.chain().focus().setParagraph().run(),
+        },
+        {
+          type: "item",
+          name: "128px",
+          disabled: (editor: Editor) => !editor.can().setParagraph(),
+          description: "Change font size to 128px",
+          icon: () => <i className="bi bi-paragraph" />,
+          onClick: (editor: Editor) =>
+            editor.chain().focus().setParagraph().run(),
+        },
+      ],
     },
     {
       type: "item",

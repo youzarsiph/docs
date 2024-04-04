@@ -37,13 +37,20 @@ const lowlight = createLowlight(all);
 function createConfig(doc: Y.Doc, provider: WebrtcProvider) {
   return {
     injectCSS: true,
+    autofocus: true,
     editorProps: {
       attributes: {
         class:
-          "prose prose-gray h-full min-h-full w-full min-w-full outline-none md:prose-lg lg:prose-xl xl:prose-2xl dark:prose-invert focus:outline-none",
+          "prose prose-gray h-full min-h-full w-full min-w-full outline-none dark:prose-invert focus:outline-none",
       },
     },
     extensions: [
+      StarterKit.configure({
+        history: false,
+        codeBlock: {
+          HTMLAttributes: { class: Fonts.mono["Fira Code"].className },
+        },
+      }),
       CharacterCount,
       CodeBlockLowlight.configure({
         lowlight,
@@ -67,7 +74,7 @@ function createConfig(doc: Y.Doc, provider: WebrtcProvider) {
       }),
       Image,
       Link,
-      Placeholder,
+      Placeholder.configure({ placeholder: "Start by typing here ..." }),
       Subscript,
       Superscript,
       Table.configure({ resizable: true }),
@@ -87,12 +94,6 @@ function createConfig(doc: Y.Doc, provider: WebrtcProvider) {
       Typography,
       Underline,
       Youtube,
-      StarterKit.configure({
-        history: false,
-        codeBlock: {
-          HTMLAttributes: { class: Fonts.mono["Fira Code"].className },
-        },
-      }),
     ],
   };
 }

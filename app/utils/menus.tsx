@@ -19,6 +19,27 @@ const Menus: DropdownProps[] = [
       },
       {
         type: "item",
+        name: "Open",
+        description: "Open a file",
+        icon: () => <i className="bi bi-file-earmark-check text-xl" />,
+        onClick: () => {},
+      },
+      {
+        type: "item",
+        name: "Save",
+        description: "Save the open file",
+        icon: () => <i className="bi bi-save text-xl" />,
+        onClick: () => {},
+      },
+      {
+        type: "item",
+        name: "Save as",
+        description: "Save the open file as...",
+        icon: () => <i className="bi bi-save2 text-xl" />,
+        onClick: () => {},
+      },
+      {
+        type: "item",
         name: "Download",
         description: "Download",
         icon: () => <i className="bi bi-download text-xl" />,
