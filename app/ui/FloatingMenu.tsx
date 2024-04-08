@@ -6,7 +6,7 @@ import { DropdownItem } from "@/app/types";
 
 const FloatingMenu = (props: { editor: Editor; items: DropdownItem[] }) => (
   <div className="relative flex h-full w-full items-center gap-4 rounded-lg p-1 shadow-xl ring-2 ring-white dark:ring-slate-900">
-    <div className="absolute inset-0 -z-10 rounded-xl backdrop-blur-3xl"></div>
+    <div className="absolute inset-0 -z-10 rounded backdrop-blur-3xl"></div>
 
     {props.items.map((action) =>
       action.type === "item" ? (

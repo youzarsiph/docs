@@ -34,7 +34,11 @@ import { Fonts } from "@/app/styles";
 
 const lowlight = createLowlight(all);
 
-function createConfig(doc: Y.Doc, provider: WebrtcProvider) {
+function createConfig(
+  doc: Y.Doc,
+  provider: WebrtcProvider,
+  user: { name: string; color: string },
+) {
   return {
     injectCSS: true,
     autofocus: true,
@@ -57,15 +61,11 @@ function createConfig(doc: Y.Doc, provider: WebrtcProvider) {
         HTMLAttributes: { class: Fonts.mono["Fira Code"].className },
       }),
       Collaboration.configure({ field: "title", document: doc }),
-      CollaborationCursor.configure({
-        provider,
-        user: { name: "youzarsiph", color: "#f783ac" },
-      }),
+      CollaborationCursor.configure({ provider, user: user }),
       Color,
       Focus.configure({
-        mode: "all",
-        className:
-          "border-1 border-dashed border-slate-800/75 dark:border-white/75 rounded",
+        mode: "deepest",
+        className: "ring-2 dark:ring-slate-900 ring-white rounded",
       }),
       FontFamily,
       Highlight.configure({

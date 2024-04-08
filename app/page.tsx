@@ -6,11 +6,13 @@ import React from "react";
 import "highlight.js/styles/github-dark.css";
 import { WebrtcProvider } from "y-webrtc";
 import { useEditor } from "@tiptap/react";
-import { Constants, createConfig } from "@/app/utils";
+import { Colors, Constants, createConfig } from "@/app/utils";
 import { Doc, Padding, Settings, Size } from "@/app/types";
 import {
   Background,
   Button,
+  ColorPicker,
+  Input,
   Loading,
   Modal,
   Nav,
@@ -23,7 +25,13 @@ const provider = new WebrtcProvider("example-document", doc);
 
 const Home = () => {
   // Display modals
-  const [modals, setModals] = React.useState({ page: false });
+  const [modals, setModals] = React.useState({ page: false, user: false });
+
+  // User
+  const [user, setUser] = React.useState({
+    name: "Your name",
+    color: Colors[0][1],
+  });
 
   // Settings
   const [settings, setSettings] = React.useState<Settings>({
@@ -44,7 +52,7 @@ const Home = () => {
 
   const editor = useEditor({
     content: active,
-    ...createConfig(doc, provider),
+    ...createConfig(doc, provider, user),
     onUpdate: ({ editor }) =>
       setDocument({
         ...document,
@@ -122,11 +130,17 @@ const Home = () => {
               </Button>
             </div>
 
-            <div className="absolute right-8 top-4 z-10 grid max-w-32 gap-4 rounded-xl bg-white/50 p-4 shadow-xl ring-white backdrop-blur-3xl dark:bg-slate-800/50 dark:ring-slate-900">
+            <div className="absolute right-8 top-4 z-10 grid max-w-64 gap-4 rounded-xl bg-white/50 p-4 shadow-xl ring-white backdrop-blur-3xl dark:bg-slate-800/50 dark:ring-slate-900">
+              <Button
+                onClick={() => setModals({ ...modals, user: !modals.user })}
+              >
+                <i className="bi bi-person text-xl" />
+                <span>User</span>
+              </Button>
               <Button
                 onClick={() => setModals({ ...modals, page: !modals.page })}
               >
-                <i className="bi bi-person text-xl" />
+                <i className="bi bi-file-earmark text-xl" />
                 <span>Page Setup</span>
               </Button>
             </div>
@@ -158,7 +172,7 @@ const Home = () => {
         title="Page Setup"
         show={modals.page}
         theme={settings.theme}
-        onClose={() => setModals({ page: false })}
+        onClose={() => setModals({ ...modals, page: false })}
       >
         <Select
           label="Size"
@@ -173,6 +187,30 @@ const Home = () => {
           data={Object.keys(Constants.paddings)}
           onChange={(v) => setSettings({ ...settings, padding: v as Padding })}
         />
+      </Modal>
+
+      <Modal
+        title="User"
+        show={modals.user}
+        theme={settings.theme}
+        onClose={() => setModals({ ...modals, user: false })}
+      >
+        <Input
+          label="Name"
+          value={user.name}
+          onChange={(event) => setUser({ ...user, name: event.target.value })}
+        />
+
+        <div className="flex items-center justify-between gap-4">
+          <ColorPicker
+            label="Change"
+            onCLick={(c) => setUser({ ...user, color: c })}
+          />
+          <div
+            className="h-8 w-8 rounded"
+            style={{ backgroundColor: user.color }}
+          ></div>
+        </div>
       </Modal>
     </div>
   );
