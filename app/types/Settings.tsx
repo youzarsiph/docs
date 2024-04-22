@@ -1,11 +1,11 @@
-import { Format, Padding, Size } from "@/app/types";
+import { Format, Padding, Size } from '@/app/types'
 
 type Settings = {
-  size: Size;
-  format: Format;
-  theme: boolean;
-  padding: Padding;
-  orientation: boolean;
-};
+  size: Size
+  format: Format
+  theme: boolean
+  padding: Padding
+  orientation: boolean
+}
 
-export default Settings;
+export default Settings

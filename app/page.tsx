@@ -1,13 +1,13 @@
-"use client";
+'use client'
 
-import clsx from "clsx";
-import * as Y from "yjs";
-import React from "react";
-import "highlight.js/styles/github-dark.css";
-import { WebrtcProvider } from "y-webrtc";
-import { useEditor } from "@tiptap/react";
-import { Colors, Constants, createConfig } from "@/app/utils";
-import { Doc, Padding, Settings, Size } from "@/app/types";
+import clsx from 'clsx'
+import * as Y from 'yjs'
+import React from 'react'
+import 'highlight.js/styles/github-dark.css'
+import { WebrtcProvider } from 'y-webrtc'
+import { useEditor } from '@tiptap/react'
+import { Colors, Constants, createConfig } from '@/app/utils'
+import { Doc, Padding, Settings, Size } from '@/app/types'
 import {
   Background,
   Button,
@@ -18,37 +18,37 @@ import {
   Nav,
   Page,
   Select,
-} from "@/app/ui";
+} from '@/app/ui'
 
-const doc = new Y.Doc();
-const provider = new WebrtcProvider("example-document", doc);
+const doc = new Y.Doc()
+const provider = new WebrtcProvider('example-document', doc)
 
 const Home = () => {
   // Display modals
-  const [modals, setModals] = React.useState({ page: false, user: false });
+  const [modals, setModals] = React.useState({ page: false, user: false })
 
   // User
   const [user, setUser] = React.useState({
-    name: "Your name",
+    name: 'Your name',
     color: Colors[0][1],
-  });
+  })
 
   // Settings
   const [settings, setSettings] = React.useState<Settings>({
     theme: true,
-    format: "pdf",
-    size: "Letter",
-    padding: "64px",
+    format: 'pdf',
+    size: 'Letter',
+    padding: '64px',
     orientation: true,
-  });
+  })
 
   // Docs
   const [document, setDocument] = React.useState<Doc>({
     id: 0,
-    title: "My Doc",
+    title: 'My Doc',
     pages: [{}],
-  });
-  const [active, setActive] = React.useState(document.pages[0]);
+  })
+  const [active, setActive] = React.useState(document.pages[0])
 
   const editor = useEditor({
     content: active,
@@ -58,23 +58,23 @@ const Home = () => {
         ...document,
         pages: document.pages.map((page) => {
           if (page === active) {
-            page = editor.getJSON();
+            page = editor.getJSON()
           }
 
-          return page;
+          return page
         }),
       }),
-  });
+  })
 
   if (!editor) {
-    return <Loading theme={settings.theme} />;
+    return <Loading theme={settings.theme} />
   }
 
   return (
     <div
       className={clsx(
         { dark: settings.theme },
-        "relative block h-screen w-screen",
+        'relative block h-screen w-screen',
       )}
     >
       <link
@@ -155,10 +155,10 @@ const Home = () => {
                     ...document,
                     pages: document.pages.map((p) => {
                       if (p === active) {
-                        p = content;
+                        p = content
                       }
 
-                      return p;
+                      return p
                     }),
                   })
                 }
@@ -213,7 +213,7 @@ const Home = () => {
         </div>
       </Modal>
     </div>
-  );
-};
+  )
+}
 
-export default Home;
+export default Home

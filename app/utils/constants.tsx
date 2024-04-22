@@ -3,13 +3,13 @@
  */
 
 const Constants = {
-  formats: ["pdf", "docx"],
-  types: ["conic", "linear", "radial"],
+  formats: ['pdf', 'docx'],
+  types: ['conic', 'linear', 'radial'],
   paddings: {
-    "16px": "p-4",
-    "32px": "p-8",
-    "64px": "p-16",
-    "128px": "p-32",
+    '16px': 'p-4',
+    '32px': 'p-8',
+    '64px': 'p-16',
+    '128px': 'p-32',
   },
   sizes: {
     Letter: { width: 1700, height: 2200 },
@@ -25,6 +25,6 @@ const Constants = {
     B5: { width: 1387, height: 1970 },
   },
   samples: [],
-};
+}
 
-export default Constants;
+export default Constants

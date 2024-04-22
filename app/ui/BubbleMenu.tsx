@@ -1,15 +1,15 @@
-import clsx from "clsx";
-import React from "react";
-import { Editor } from "@tiptap/react";
-import { Menu, Transition } from "@headlessui/react";
-import { DropdownItem } from "@/app/types";
+import clsx from 'clsx'
+import React from 'react'
+import { Editor } from '@tiptap/react'
+import { Menu, Transition } from '@headlessui/react'
+import { DropdownItem } from '@/app/types'
 
 const BubbleMenu = (props: { editor: Editor; items: DropdownItem[] }) => (
   <div className="relative flex items-center gap-4 rounded-lg p-1 shadow-xl ring-2 ring-white dark:ring-slate-900">
     <div className="absolute inset-0 -z-10 rounded backdrop-blur-3xl"></div>
 
     {props.items.map((action) =>
-      action.type === "item" ? (
+      action.type === 'item' ? (
         <button
           key={action.name}
           title={action.name}
@@ -24,14 +24,14 @@ const BubbleMenu = (props: { editor: Editor; items: DropdownItem[] }) => (
               : undefined
           }
           className={clsx(
-            "flex h-8 w-8 items-center justify-center rounded-md ring-1 ring-transparent",
-            "hover:bg-white/75 hover:text-white hover:ring-white dark:hover:bg-slate-800/75 dark:hover:ring-slate-900",
+            'flex h-8 w-8 items-center justify-center rounded-md ring-1 ring-transparent',
+            'hover:bg-white/75 hover:text-white hover:ring-white dark:hover:bg-slate-800/75 dark:hover:ring-slate-900',
             {
-              "ring-4 ring-slate-900 dark:ring-white":
+              'ring-4 ring-slate-900 dark:ring-white':
                 action.isActive !== undefined
                   ? action.isActive(props.editor)
                   : false,
-              "ring-1 ring-transparent":
+              'ring-1 ring-transparent':
                 action.isActive !== undefined
                   ? !action.isActive(props.editor)
                   : true,
@@ -47,8 +47,8 @@ const BubbleMenu = (props: { editor: Editor; items: DropdownItem[] }) => (
               <Menu.Button
                 title={action.name}
                 className={clsx(
-                  "flex items-center gap-2 rounded-md p-1 ring-1 ring-transparent",
-                  "hover:bg-white/75 hover:text-white hover:ring-white dark:hover:bg-slate-800/75 dark:hover:ring-slate-900",
+                  'flex items-center gap-2 rounded-md p-1 ring-1 ring-transparent',
+                  'hover:bg-white/75 hover:text-white hover:ring-white dark:hover:bg-slate-800/75 dark:hover:ring-slate-900',
                 )}
               >
                 {action.icon()}
@@ -78,9 +78,9 @@ const BubbleMenu = (props: { editor: Editor; items: DropdownItem[] }) => (
                                 : undefined
                             }
                             className={clsx(
-                              "group flex w-full items-center justify-between gap-4 rounded-md px-2 py-1 ring-1 ring-transparent",
+                              'group flex w-full items-center justify-between gap-4 rounded-md px-2 py-1 ring-1 ring-transparent',
                               {
-                                "bg-slate-100 ring-slate-200 dark:bg-slate-900 dark:ring-slate-950":
+                                'bg-slate-100 ring-slate-200 dark:bg-slate-900 dark:ring-slate-950':
                                   active,
                               },
                             )}
@@ -106,6 +106,6 @@ const BubbleMenu = (props: { editor: Editor; items: DropdownItem[] }) => (
       ),
     )}
   </div>
-);
+)
 
-export default BubbleMenu;
+export default BubbleMenu

@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react'
 
 const Background = () => (
   <>
@@ -18,6 +18,6 @@ const Background = () => (
       </div>
     </div>
   </>
-);
+)
 
-export default Background;
+export default Background

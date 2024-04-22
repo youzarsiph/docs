@@ -2,12 +2,12 @@
  * Document type
  */
 
-import { JSONContent } from "@tiptap/react";
+import { JSONContent } from '@tiptap/react'
 
 type Doc = {
-  id: number;
-  title: string;
-  pages: JSONContent[];
-};
+  id: number
+  title: string
+  pages: JSONContent[]
+}
 
-export default Doc;
+export default Doc

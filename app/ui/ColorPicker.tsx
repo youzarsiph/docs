@@ -1,10 +1,10 @@
-import React from "react";
-import { Menu, Transition } from "@headlessui/react";
-import { Colors } from "@/app/utils";
+import React from 'react'
+import { Menu, Transition } from '@headlessui/react'
+import { Colors } from '@/app/utils'
 
 const ColorPicker = (props: {
-  label: string;
-  onCLick: (color: string) => void;
+  label: string
+  onCLick: (color: string) => void
 }) => (
   <Menu as="div" className="relative inline-block text-left">
     <div>
@@ -42,6 +42,6 @@ const ColorPicker = (props: {
       </Menu.Items>
     </Transition>
   </Menu>
-);
+)
 
-export default ColorPicker;
+export default ColorPicker

@@ -1,18 +1,18 @@
-import clsx from "clsx";
-import React from "react";
-import { Menu, Transition } from "@headlessui/react";
-import { Editor } from "@tiptap/react";
-import { ActionMap } from "@/app//utils";
-import { DropdownItem } from "@/app/types";
+import clsx from 'clsx'
+import React from 'react'
+import { Menu, Transition } from '@headlessui/react'
+import { Editor } from '@tiptap/react'
+import { ActionMap } from '@/app//utils'
+import { DropdownItem } from '@/app/types'
 
 const Toolbar = (props: { editor: Editor }) => (
   <div className="flex flex-wrap items-center divide-x-2 divide-slate-900 rounded-xl bg-slate-200/50 ring-2 ring-white dark:bg-slate-800/50 dark:ring-slate-900">
     {Object.entries(ActionMap).map((actionList) => (
       <div key={actionList[0]} className="flex items-center gap-1 px-2 py-1">
         {actionList[1].map((action) => {
-          const newAction = action as DropdownItem;
+          const newAction = action as DropdownItem
 
-          return newAction.type === "item" ? (
+          return newAction.type === 'item' ? (
             <button
               key={newAction.name}
               title={newAction.name}
@@ -27,14 +27,14 @@ const Toolbar = (props: { editor: Editor }) => (
                   : undefined
               }
               className={clsx(
-                "flex h-8 w-8 items-center justify-center rounded-md ring-1 ring-transparent",
-                "hover:bg-white/75 hover:text-white hover:ring-white dark:hover:bg-slate-800/75 dark:hover:ring-slate-900",
+                'flex h-8 w-8 items-center justify-center rounded-md ring-1 ring-transparent',
+                'hover:bg-white/75 hover:text-white hover:ring-white dark:hover:bg-slate-800/75 dark:hover:ring-slate-900',
                 {
-                  "ring-4 ring-slate-900 dark:ring-white":
+                  'ring-4 ring-slate-900 dark:ring-white':
                     newAction.isActive !== undefined
                       ? newAction.isActive(props.editor)
                       : false,
-                  "ring-1 ring-transparent":
+                  'ring-1 ring-transparent':
                     newAction.isActive !== undefined
                       ? !newAction.isActive(props.editor)
                       : true,
@@ -50,8 +50,8 @@ const Toolbar = (props: { editor: Editor }) => (
                   <Menu.Button
                     title={newAction.name}
                     className={clsx(
-                      "flex items-center gap-2 rounded-md p-1 ring-1 ring-transparent",
-                      "hover:bg-white/75 hover:text-white hover:ring-white dark:hover:bg-slate-800/75 dark:hover:ring-slate-900",
+                      'flex items-center gap-2 rounded-md p-1 ring-1 ring-transparent',
+                      'hover:bg-white/75 hover:text-white hover:ring-white dark:hover:bg-slate-800/75 dark:hover:ring-slate-900',
                     )}
                   >
                     {newAction.icon()}
@@ -81,9 +81,9 @@ const Toolbar = (props: { editor: Editor }) => (
                                     : undefined
                                 }
                                 className={clsx(
-                                  "group flex w-full items-center justify-between gap-4 rounded-md px-2 py-1 ring-1 ring-transparent",
+                                  'group flex w-full items-center justify-between gap-4 rounded-md px-2 py-1 ring-1 ring-transparent',
                                   {
-                                    "bg-slate-100 ring-slate-200 dark:bg-slate-900 dark:ring-slate-950":
+                                    'bg-slate-100 ring-slate-200 dark:bg-slate-900 dark:ring-slate-950':
                                       active,
                                   },
                                 )}
@@ -106,11 +106,11 @@ const Toolbar = (props: { editor: Editor }) => (
                 </Transition>
               </Menu>
             </div>
-          );
+          )
         })}
       </div>
     ))}
   </div>
-);
+)
 
-export default Toolbar;
+export default Toolbar

@@ -1,21 +1,21 @@
-import clsx from "clsx";
-import React from "react";
+import clsx from 'clsx'
+import React from 'react'
 import {
   BubbleMenu,
   Editor,
   EditorContent,
   FloatingMenu,
   JSONContent,
-} from "@tiptap/react";
-import { Settings } from "@/app/types";
-import { ActionMap, Constants } from "@/app/utils";
-import { BubbleMenu as BMenu, FloatingMenu as FMenu } from "@/app/ui";
+} from '@tiptap/react'
+import { Settings } from '@/app/types'
+import { ActionMap, Constants } from '@/app/utils'
+import { BubbleMenu as BMenu, FloatingMenu as FMenu } from '@/app/ui'
 
 const Page = (props: {
-  editor: Editor;
-  settings: Settings;
-  content: JSONContent;
-  onContentChange: (content: JSONContent) => void;
+  editor: Editor
+  settings: Settings
+  content: JSONContent
+  onContentChange: (content: JSONContent) => void
 }) => (
   <div className="p-1">
     <section
@@ -24,7 +24,7 @@ const Page = (props: {
         height: Constants.sizes[props.settings.size].height / 2,
       }}
       className={clsx(
-        "relative grid h-full w-full flex-col gap-4 overflow-hidden rounded-lg rounded-tr-xl bg-white/60 ring-2 ring-white dark:bg-slate-800/60 dark:ring-slate-900",
+        'relative grid h-full w-full flex-col gap-4 overflow-hidden rounded-lg rounded-tr-xl bg-white/60 ring-2 ring-white dark:bg-slate-800/60 dark:ring-slate-900',
         Constants.paddings[props.settings.padding],
       )}
     >
@@ -42,7 +42,7 @@ const Page = (props: {
             editor={props.editor}
             items={[
               ActionMap.text[0],
-              ActionMap.text.filter((i) => i.type !== "menu"),
+              ActionMap.text.filter((i) => i.type !== 'menu'),
             ].flat()}
           />
         </BubbleMenu>
@@ -61,6 +61,6 @@ const Page = (props: {
       <EditorContent editor={props.editor} />
     </section>
   </div>
-);
+)
 
-export default Page;
+export default Page

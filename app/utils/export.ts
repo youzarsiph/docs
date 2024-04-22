@@ -6,12 +6,12 @@
 
 const exportDoc = (format: string, fileName: string) => {
   switch (format) {
-    case "format":
-      break;
+    case 'format':
+      break
 
     default:
-      break;
+      break
   }
-};
+}
 
-export default exportDoc;
+export default exportDoc

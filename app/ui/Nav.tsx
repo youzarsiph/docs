@@ -1,12 +1,12 @@
-import clsx from "clsx";
-import React from "react";
-import { Transition } from "@headlessui/react";
-import { Menus } from "@/app/utils";
-import { NavProps } from "@/app/types";
-import { Button, ColorPicker, Dropdown, Logo, Toolbar } from "@/app/ui";
+import clsx from 'clsx'
+import React from 'react'
+import { Transition } from '@headlessui/react'
+import { Menus } from '@/app/utils'
+import { NavProps } from '@/app/types'
+import { Button, ColorPicker, Dropdown, Logo, Toolbar } from '@/app/ui'
 
 const Nav = (props: NavProps) => {
-  const [display, setDisplay] = React.useState(true);
+  const [display, setDisplay] = React.useState(true)
 
   return (
     <nav className="relative z-20 w-full">
@@ -72,9 +72,9 @@ const Nav = (props: NavProps) => {
 
             <Button onClick={() => setDisplay(!display)}>
               <i
-                className={clsx("bi text-xl", {
-                  "bi-chevron-up": display,
-                  "bi-chevron-down": !display,
+                className={clsx('bi text-xl', {
+                  'bi-chevron-up': display,
+                  'bi-chevron-down': !display,
                 })}
               />
             </Button>
@@ -91,16 +91,16 @@ const Nav = (props: NavProps) => {
             }
           >
             <i
-              className={clsx("bi text-xl", {
-                "bi-sun": props.settings.theme,
-                "bi-moon": !props.settings.theme,
+              className={clsx('bi text-xl', {
+                'bi-sun': props.settings.theme,
+                'bi-moon': !props.settings.theme,
               })}
             />
           </Button>
         </div>
       </div>
     </nav>
-  );
-};
+  )
+}
 
-export default Nav;
+export default Nav

@@ -1,8 +1,8 @@
-import clsx from "clsx";
-import React from "react";
-import { Editor } from "@tiptap/react";
-import { Menu, Transition } from "@headlessui/react";
-import { DropdownProps } from "@/app/types";
+import clsx from 'clsx'
+import React from 'react'
+import { Editor } from '@tiptap/react'
+import { Menu, Transition } from '@headlessui/react'
+import { DropdownProps } from '@/app/types'
 
 const Dropdown = (props: DropdownProps & { editor: Editor }) => (
   <Menu as="div" className="relative text-left">
@@ -24,7 +24,7 @@ const Dropdown = (props: DropdownProps & { editor: Editor }) => (
       <Menu.Items className="absolute left-0 z-10 mt-2 min-w-80 origin-top-left rounded-md bg-white shadow-xl ring-1 ring-white focus:outline-none dark:bg-slate-800 dark:ring-slate-900">
         {props.items.map((item) => (
           <div key={item.name} className="relative p-1">
-            {item.type === "item" ? (
+            {item.type === 'item' ? (
               <Menu.Item>
                 {({ active }) => (
                   <button
@@ -34,9 +34,9 @@ const Dropdown = (props: DropdownProps & { editor: Editor }) => (
                         : undefined
                     }
                     className={clsx(
-                      "group flex w-full items-center justify-between gap-4 rounded-md px-2 py-1 ring-1 ring-transparent",
+                      'group flex w-full items-center justify-between gap-4 rounded-md px-2 py-1 ring-1 ring-transparent',
                       {
-                        "bg-slate-100 ring-slate-200 dark:bg-slate-900 dark:ring-slate-950":
+                        'bg-slate-100 ring-slate-200 dark:bg-slate-900 dark:ring-slate-950':
                           active,
                       },
                     )}
@@ -56,8 +56,8 @@ const Dropdown = (props: DropdownProps & { editor: Editor }) => (
                 <div>
                   <Menu.Button
                     className={clsx(
-                      "group flex w-full items-center justify-between gap-4 rounded-md px-2 py-1 ring-1 ring-transparent",
-                      "hover:bg-slate-100 hover:ring-slate-200 dark:hover:bg-slate-900 dark:hover:ring-slate-950",
+                      'group flex w-full items-center justify-between gap-4 rounded-md px-2 py-1 ring-1 ring-transparent',
+                      'hover:bg-slate-100 hover:ring-slate-200 dark:hover:bg-slate-900 dark:hover:ring-slate-950',
                     )}
                   >
                     <span className="flex items-center gap-4">
@@ -90,8 +90,8 @@ const Dropdown = (props: DropdownProps & { editor: Editor }) => (
                                   : undefined
                               }
                               className={clsx(
-                                "group flex w-full items-center justify-between gap-4 rounded-md px-2 py-1 ring-1 ring-transparent",
-                                "hover:bg-slate-100 hover:ring-slate-200 dark:hover:bg-slate-900 dark:hover:ring-slate-950",
+                                'group flex w-full items-center justify-between gap-4 rounded-md px-2 py-1 ring-1 ring-transparent',
+                                'hover:bg-slate-100 hover:ring-slate-200 dark:hover:bg-slate-900 dark:hover:ring-slate-950',
                               )}
                             >
                               <span className="flex items-center gap-4">
@@ -115,6 +115,6 @@ const Dropdown = (props: DropdownProps & { editor: Editor }) => (
       </Menu.Items>
     </Transition>
   </Menu>
-);
+)
 
-export default Dropdown;
+export default Dropdown
